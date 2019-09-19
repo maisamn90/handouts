@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1:100,200,300,400,500,600,700,800,900|Handlee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css')}}" type="text/css" />
+    <title>Handouts - Giving is a Blessing</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <a class="navbar-brand" href="/"><img src="../static/img/handouts-logo.png" class="img-fluid" width="40px"></img>Handouts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="btn btn-outline-white" href="{{ url_for('postAd')}}">Post Ad</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header class="text-center">
+        <div class="container h-100">
+            <div class="row align-items-center h-100 ">
+                <div class="col ">
+                    <p class="header-text">Find Free Stuff<br> Always Free , Only Free</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-4 my-3">
+                    <a  id="cat_1" onclick="get_category(this.id)" class=" category-item text-center hvr-shutter-out-vertical" style="background-image:url('../static/img/furniture.jpg')">
+                        <p>Home Furniture</p>
+                    </a>
+                </div>
+                <div class="col-md-4 my-3">
+                    <a  id="cat_2" onclick="get_category(this.id)" class=" category-item text-center hvr-shutter-out-vertical" style="background-image:url('../static/img/clothing.jpg')">
+                        <p>Clothing</p>
+                    </a>
+                </div>
+                <div class="col-md-4 my-3">
+                    <a  id="cat_3" onclick="get_category(this.id)" class=" category-item text-center hvr-shutter-out-vertical" style="background-image:url('../static/img/appliances.jpg')">
+                        <p>Appliances</p>
+                    </a>
+                </div>
+                <div class="col-md-4 my-3">
+                    <a  id="cat_4" onclick="get_category(this.id)" class=" category-item text-center hvr-shutter-out-vertical" style="background-image:url('../static/img/electronics.jpg')">
+                        <p>Electronics</p>
+                    </a>
+                </div>
+                <div class="col-md-4 my-3">
+                    <a  id="cat_5" onclick = "get_category(this.id)" class=" category-item text-center hvr-shutter-out-vertical" style="background-image:url('../static/img/toys-games.jpg')">
+                        <p>Toys &amp; Games</p>
+                    </a>
+                </div>
+                <div class="col-md-4 my-3">
+                    <a  id="cat_6" onclick = " get_category(this.id) " class="  category-item text-center hvr-shutter-out-vertical" style="background-image:url('../static/img/sporting.jpg')">
+                        <p>Sporting</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="recently-added">
+                {% if not data["nodata"] %}
+                <div class="container">
+                    <h2>Recently Added</h2>
+                    <hr>
+                <div class="row">
+                    {% for product in data %}
+                    <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="small-card-img">
+                            <img src="{{ url_for('static',filename='img/uploads/small/')}}{{product["Image"]}}" class="card-img-top" alt="{{product[" Product_name "]}}">
+                        </div>
+                        
+                        <div class="card-body">
+                            <h3>{{product["Product_name"]}}</h3>
+                            <small class="text-muted ml-auto">Posted: {{product["Date"]}}</small>
+                            <p class="card-text">{{product["Description"]}}</p>
+                            <a class="btn btn-green ml-auto" href="category/{{product["Category_id"]}}#prod_id_{{product["Product_id"]}}" >More details</a>
+                        </div>
+                    </div>
+                    </div>
+                 {% endfor %}
+                 </div>
+                 </div>
+                 {% endif %}
+    </section>
+    <footer>
+        <a class="navbar-brand" href="/"><img src="../static/img/handouts-logo.png" class="img-fluid" width="40px"></img>Handouts</a>
+    </footer>
+
+    <script type="text/javascript" src="{{ url_for('static',filename='js/main.js')}}"></script>
+
+    <script type="text/javascript">
+        function get_category(clicked_id) {
+            var selected_category = clicked_id.replace("cat_", "");;
+            window.location.replace("{{ url_for('category')}}"+ "/" + selected_category);
+        }
+
+        function selected_category() {
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+
+                if (this.readyState == 4 && this.status == 200) {
+                    var response_game = (this.responseText);
+                }
+            };
+            xhttp.open("POST", "{{url_for('category')}}" + "?selected_category=" + selected_category, true);
+            xhttp.send();
+        }
+        
+          function recent_products() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+
+                if (this.readyState == 4 && this.status == 200) {
+                    var response_data = (this.responseText);
+                }
+            };
+            xhttp.open("POST", "{{url_for('index')}}" , true);
+            xhttp.send();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+-- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
+--
+-- Host: localhost    Database: Handouts
+-- ------------------------------------------------------
+-- Server version	5.7.27-0ubuntu0.18.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Category`
+--
+
+DROP TABLE IF EXISTS `Category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Category` (
+  `Category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Category_name` varchar(30) DEFAULT NULL,
+  `Description` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`Category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Category`
+--
+
+LOCK TABLES `Category` WRITE;
+/*!40000 ALTER TABLE `Category` DISABLE KEYS */;
+INSERT INTO `Category` VALUES (1,'Furniture',NULL),(2,'Clothing',NULL),(3,'Appliances',NULL),(4,'Electronics',NULL),(5,'Toys',NULL),(6,'Sporting',NULL);
+/*!40000 ALTER TABLE `Category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Posts`
+--
+
+DROP TABLE IF EXISTS `Posts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Posts` (
+  `Post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `User_id` int(11) DEFAULT NULL,
+  `Product_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Post_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Posts`
+--
+
+LOCK TABLES `Posts` WRITE;
+/*!40000 ALTER TABLE `Posts` DISABLE KEYS */;
+INSERT INTO `Posts` VALUES (2,'2019-09-10 15:14:14',4,11),(3,'2019-09-10 15:16:44',5,12),(6,'2019-09-10 15:28:07',8,14),(7,'2019-09-10 15:31:01',9,15),(8,'2019-09-12 14:23:44',10,16),(15,'2019-09-13 16:26:30',22,19),(16,'2019-09-13 16:31:24',23,20),(17,'2019-09-13 16:38:40',24,21),(18,'2019-09-13 16:56:47',28,21),(19,'2019-09-16 15:16:09',30,22),(20,'2019-09-16 15:40:34',31,23),(21,'2019-09-16 15:42:28',32,24),(22,'2019-09-16 16:15:56',33,25),(23,'2019-09-16 16:19:04',34,26),(24,'2019-09-16 16:32:30',35,27),(25,'2019-09-16 16:33:52',36,28),(26,'2019-09-16 16:35:01',37,29),(27,'2019-09-16 16:36:49',38,30),(28,'2019-09-16 16:37:19',39,31),(29,'2019-09-16 16:38:25',40,32),(30,'2019-09-16 16:39:50',41,33),(31,'2019-09-16 16:40:54',42,34),(32,'2019-09-16 16:47:34',43,35),(33,'2019-09-16 16:48:26',44,36),(34,'2019-09-16 16:49:32',45,37),(35,'2019-09-16 16:50:02',46,38),(36,'2019-09-16 16:50:11',47,39),(37,'2019-09-16 16:50:34',48,40),(38,'2019-09-16 16:52:49',49,41),(39,'2019-09-16 16:53:00',50,42),(40,'2019-09-16 16:54:09',51,43),(41,'2019-09-16 16:55:18',52,44),(42,'2019-09-16 17:00:52',53,45),(43,'2019-09-16 17:01:08',54,46),(44,'2019-09-16 17:01:16',55,47),(45,'2019-09-16 17:01:40',56,48);
+/*!40000 ALTER TABLE `Posts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Products`
+--
+
+DROP TABLE IF EXISTS `Products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Products` (
+  `Product_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Product_name` varchar(40) DEFAULT NULL,
+  `Image` varchar(60) DEFAULT NULL,
+  `Description` varchar(300) DEFAULT NULL,
+  `Age` varchar(30) DEFAULT NULL,
+  `Product_condition` varchar(20) DEFAULT NULL,
+  `Category_id` int(11) DEFAULT NULL,
+  `Availability` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`Product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Products`
+--
+
+LOCK TABLES `Products` WRITE;
+/*!40000 ALTER TABLE `Products` DISABLE KEYS */;
+INSERT INTO `Products` VALUES (1,'test','alphabet-bg.jpg','fddsf','more_one_year','Heavy used',3,1),(2,'test','alphabet-bg.jpg','fddsf','more_one_year','Heavy used',3,1),(3,'test 1','alphabet-bg.jpg','dgdgdfgdf','more_one_year','Used',3,1),(4,'test 1','alphabet-bg.jpg','dgdgdfgdf','more_one_year','Used',3,1),(5,'test 1','alphabet-bg.jpg','dgdgdfgdf','more_one_year','Used',3,1),(6,'test 1','alphabet-bg.jpg','dgdgdfgdf','more_one_year','Used',3,1),(7,'test 1','alphabet-bg.jpg','dgdgdfgdf','more_one_year','Used',3,1),(8,'test 1','alphabet-bg.jpg','dgdgdfgdf','more_one_year','Used',3,1),(9,'test 1','alphabet-bg.jpg','dgdgdfgdf','more_one_year','Used',3,1),(11,'test22','alphabet-bg.jpg','sdssd','more_five_years','Heavy used',2,0),(12,'test','alphabet-bg.jpg','sssd','more_five_years','Used',3,0),(13,'test','alphabet-bg.jpg','sssd','more_five_years','Used',3,1),(14,'test','alphabet-bg.jpg','sssd','more_five_years','Used',3,0),(15,'test 1','alphabet-bg.jpg','sdsds','more_one_year','Heavy used',3,0),(16,'prod 2 test','alphabet-bg.jpg','anything','more_one_year','Used',2,1),(18,'table','wordbeatit-yellow.jpg','ssdds','more_five_years','Brand new',1,1),(19,'dsfdsfds','wordbeatit-yellow.jpg','sdfsdf','more_five_years','Brand new',1,1),(20,'Sofa','wordbeatit-yellow.jpg','Sofaaaaaaaaaa','less_one_year','Brand new',1,0),(21,'TV','wordbeatit-yellow.jpg','TVTVTV','more_five_years','Used',4,0),(22,'sofa','wordbeatit-yellow.jpg','ffg','less_one_year','Used',4,1),(23,'test22','wordbeatit-yellow.jpg','sdsds','less_one_year','Used',2,1),(24,'test','wordbeatit-yellow.jpg','hgh','less_one_year','Used',1,1),(25,'sofa','banner.jpg','sdsdsd','less_one_year','Heavy used',1,1),(26,'sofa','banner.jpg','sdsdsd','less_one_year','Heavy used',1,1),(27,'sofa','banner.jpg','sdsdsd','less_one_year','Heavy used',1,1),(28,'sofa','banner.jpg','sdsdsd','less_one_year','Heavy used',1,1),(29,'sofa','banner.jpg','sdsdsd','less_one_year','Heavy used',1,1),(30,'sofa','banner.jpg','sdsdsd','less_one_year','Heavy used',1,1),(31,'sofa','banner.jpg','sdsdsd','less_one_year','Heavy used',1,1),(32,'sofa','appliances.jpg','sdsdsd','less_one_year','Heavy used',1,1),(33,'sofa','alphabet-bg.jpg','sdsdsd','less_one_year','Heavy used',1,1),(34,'sofa','wordbeatit-yellow.jpg','sdsdsd','less_one_year','Heavy used',1,1),(35,'sofa','clothing.jpg','sdsdsd','less_one_year','Heavy used',1,1),(36,'sofa','banner.jpg','sdsdsd','less_one_year','Heavy used',1,1),(37,'sofa','banner.jpg','sdsdsd','less_one_year','Heavy used',1,1),(38,'sofa','appliances.jpg','sdsdsd','less_one_year','Heavy used',1,1),(39,'sofa','appliances.jpg','sdsdsd','less_one_year','Heavy used',1,1),(40,'sofa','alphabet-bg.jpg','sdsdsd','less_one_year','Heavy used',1,1),(41,'sofa','alphabet-bg.jpg','sdsdsd','less_one_year','Heavy used',1,1),(42,'sofa','wordbeatit-yellow.jpg','sdsdsd','less_one_year','Heavy used',1,1),(43,'sofa','wordbeatit-yellow.jpg','sdsdsd','less_one_year','Heavy used',1,1),(44,'sofa','wordbeatit-yellow.jpg','sdsdsd','less_one_year','Heavy used',1,1),(45,'sofa','alphabet-bg.jpg','sdsdsd','less_one_year','Heavy used',1,1),(46,'sofa','banner.jpg','sdsdsd','less_one_year','Heavy used',1,1),(47,'sofa','appliances.jpg','sdsdsd','less_one_year','Heavy used',1,1),(48,'sofa','clothing.jpg','sdsdsd','less_one_year','Heavy used',1,1);
+/*!40000 ALTER TABLE `Products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Users`
+--
+
+DROP TABLE IF EXISTS `Users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Users` (
+  `User_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(40) DEFAULT NULL,
+  `User_type` varchar(10) DEFAULT NULL,
+  `Product_id` int(11) DEFAULT NULL,
+  `Address` varchar(100) DEFAULT NULL,
+  `User_email` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`User_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Users`
+--
+
+LOCK TABLES `Users` WRITE;
+/*!40000 ALTER TABLE `Users` DISABLE KEYS */;
+INSERT INTO `Users` VALUES (1,'Mais Ammaneh','Donor',9,NULL,'maisamn90@gmail.com'),(2,'Mais Ammaneh','Donor',10,NULL,'maisamn90@gmail.com'),(3,'Mais Ammaneh','Donor',11,NULL,'maisamn90@gmail.com'),(5,'Mais Ammaneh','Donor',12,NULL,'maisamn90@gmail.com'),(6,'Mais Ammaneh','Donor',13,NULL,'maisamn90@gmail.com'),(8,'Mais Ammaneh','Donor',14,NULL,'maisamn90@gmail.com'),(9,'Mais Ammaneh','Donor',15,NULL,'maisamn90@gmail.com'),(10,'testing DB','Donor',16,'sfsfs','maisamn90@gmail.com'),(11,'maisamn90','Customer',11,NULL,'maisamn90@gmail.com'),(15,'sdsdsd','Customer',12,NULL,'maisamn90@gmail.com'),(23,'Noor','Donor',20,'dgdgdf','maisamn90@gmail.com'),(24,'Ghaith','Donor',21,'sfsfs','maisamn90@gmail.com'),(25,'mais','Customer',21,NULL,'maisamn90@gmail.com'),(26,'mais','Customer',14,NULL,'maisamn90@gmail.com'),(27,'mais','Customer',15,NULL,'maisamn90@gmail.com'),(28,'abhay','Donor',21,'fgdgd','maisamn90@gmail.com'),(29,'abhay','Customer',20,NULL,'ababhaybarthwal@gmail.com'),(30,'Noor','Donor',22,'sfsfsf','maisamn90@gmail.com'),(31,'Mais Ammaneh','Donor',23,'fgdgd','maisamn90@gmail.com'),(32,'Mais Ammaneh','Donor',24,'fgdgd','maisamn90@gmail.comtest'),(33,'Mais Ammaneh','Donor',25,'sdsds','maisamn90@gmail.com'),(34,'Mais Ammaneh','Donor',26,'sdsds','maisamn90@gmail.com'),(35,'Mais Ammaneh','Donor',27,'sdsds','maisamn90@gmail.com'),(36,'Mais Ammaneh','Donor',28,'sdsds','maisamn90@gmail.com'),(37,'Mais Ammaneh','Donor',29,'sdsds','maisamn90@gmail.com'),(38,'Mais Ammaneh','Donor',30,'sdsds','maisamn90@gmail.com'),(39,'Mais Ammaneh','Donor',31,'sdsds','maisamn90@gmail.com'),(40,'Mais Ammaneh','Donor',32,'sdsds','maisamn90@gmail.com'),(41,'Mais Ammaneh','Donor',33,'sdsds','maisamn90@gmail.com'),(42,'Mais Ammaneh','Donor',34,'sdsds','maisamn90@gmail.com'),(43,'Mais Ammaneh','Donor',35,'sdsds','maisamn90@gmail.com'),(44,'Mais Ammaneh','Donor',36,'sdsds','maisamn90@gmail.com'),(45,'Mais Ammaneh','Donor',37,'sdsds','maisamn90@gmail.com'),(46,'Mais Ammaneh','Donor',38,'sdsds','maisamn90@gmail.com'),(47,'Mais Ammaneh','Donor',39,'sdsds','maisamn90@gmail.com'),(48,'Mais Ammaneh','Donor',40,'sdsds','maisamn90@gmail.com'),(49,'Mais Ammaneh','Donor',41,'sdsds','maisamn90@gmail.com'),(50,'Mais Ammaneh','Donor',42,'sdsds','maisamn90@gmail.com'),(51,'Mais Ammaneh','Donor',43,'sdsds','maisamn90@gmail.com'),(52,'Mais Ammaneh','Donor',44,'sdsds','maisamn90@gmail.com'),(53,'Mais Ammaneh','Donor',45,'sdsds','maisamn90@gmail.com'),(54,'Mais Ammaneh','Donor',46,'sdsds','maisamn90@gmail.com'),(55,'Mais Ammaneh','Donor',47,'sdsds','maisamn90@gmail.com'),(56,'Mais Ammaneh','Donor',48,'sdsds','maisamn90@gmail.com');
+/*!40000 ALTER TABLE `Users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-09-17 13:27:09

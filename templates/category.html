@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static',filename='js/jquery.datetimepicker.full.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1:100,200,300,400,500,600,700,800,900|Handlee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.datetimepicker.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css')}}" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.css" type="text/css" />
+    
+    
+     <!-- Font Awesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <title>Handouts - Giving is a Blessing</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <a class="navbar-brand" href="/"><img src="../static/img/handouts-logo.png" class="img-fluid" width="40px"></img>Handouts</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="btn btn-outline-white" href="{{ url_for('postAd')}}">Post Ad</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-6 col-lg-2 col-md-4 my-3">
+                    <a id="cat_1" onclick="get_category(this.id)" class=" category-list category-item text-center hvr-shutter-out-vertical " style="background-image:url('../static/img/furniture.jpg')">
+                        <p>Home Furniture</p>
+                    </a>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4 my-3">
+                    <a id="cat_2" onclick="get_category(this.id)" class="category-list category-item text-center hvr-shutter-out-vertical" style="background-image:url('../static/img/clothing.jpg')">
+                        <p>Clothing</p>
+                    </a>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4 my-3">
+                    <a id="cat_3" onclick="get_category(this.id)" class="category-list category-item text-center hvr-shutter-out-vertical" style="background-image:url('../static/img/appliances.jpg')">
+                        <p>Appliances</p>
+                    </a>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4 my-3">
+                    <a id="cat_4" onclick="get_category(this.id)" class="category-list category-item text-center hvr-shutter-out-vertical" style="background-image:url('../static/img/electronics.jpg')">
+                        <p>Electronics</p>
+                    </a>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4 my-3">
+                    <a id="cat_5" onclick="get_category(this.id)" class="category-list category-item text-center hvr-shutter-out-vertical" style="background-image:url('../static/img/toys-games.jpg')">
+                        <p>Toys &amp; Games</p>
+                    </a>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4 my-3">
+                    <a id="cat_6" onclick="get_category(this.id)" class="category-list category-item text-center hvr-shutter-out-vertical" style="background-image:url('../static/img/sporting.jpg')">
+                        <p>Sporting</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                {% if data["message"] %}
+                <div class="col-12 no-data">
+                    <p class="text-center text-muted"><i class="far fa-sad-tear"></i></p>
+                    <p class="text-center text-muted">We're Sorry!</p>
+                    <p class="text-center text-muted">{{data["message"]}}</p>
+                </div>
+                {% else %}
+                
+                {% for product in data %}
+                <div class="col-12">
+                    <div class="card mb-3" id="prod_id_{{product["Product_id"]}}">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 card-img-box">
+                                <a href="{{ url_for('static',filename='img/uploads/')}}{{product["Image"] }}" data-lightbox="{{product["Image"] }}" data-title="{{product["Product_name"]}}" class="">
+                                    <img src="{{ url_for('static',filename='img/uploads/small/')}}{{product["Image"] }}" class="card-img" alt="...">
+                                </a>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <h5 class="card-title">{{product["Product_name"]}}</h5>
+                                        <small class="text-muted ml-auto">Posted: {{product["Date"]}}</small>
+                                    </div>
+                                    <p class="card-subtitle mb-2"><span>Condition: {{product["Product_condition"]}}</span> | <span>Age: {{product["Age"]}}</span></p>
+                                    <p class="card-text">{{product["Description"]}}</p>
+                                    <p class="card-text"> <small class="text-muted ml-auto">Added By: {{product["Username"]}}</small></p>
+                                    <div class="d-flex">
+                                        <p class="text-muted"><i class="fas fa-map-marker-alt mr-2"></i>{{product["Address"]}}</i></p>
+                                        <button class="btn btn-green ml-auto" id="button_id_{{product["Product_id"]}}" onclick="get_product(this.id)" data-toggle="modal" data-target="#take_product">Take</button></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 {% endfor %}
+                 {% endif %}
+                
+            </div>
+        </div>
+    </section>
+    <footer>
+        <a class="navbar-brand" href="/"><img src="../static/img/handouts-logo.png" class="img-fluid" width="40px"></img>Handouts</a>
+    </footer>
+
+<div class="modal fade" id="take_product" tabindex="-1" role="dialog" aria-labelledby="take_product_label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="take_product_label">Request Take Item <span class="item_id"></span></spa></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <form id="take-form" method="POST" data-toggle="validator" role="form">
+            <div class="loader hide"><img src="{{ url_for('static',filename='img/loader.gif')}}"></img></div>
+            <div class="modal-body">
+                <div class='alert alert-info' role='alert'>All fields are required</div>
+                <div class="form-group">
+                    <label for="customer_fullname">Customer full name *</label>
+                    <input type="text" class="form-control send_mail_form" id="customer_fullname" name="customer_fullname" placeholder="Customer full name" required>
+                    <div class="help-block with-errors small"></div>
+                </div>
+                <div class="form-group">
+                    <label for="customer_email">Email address *</label>
+                    <input type="email" class="form-control send_mail_form" id="customer_email" name="customer_email" placeholder="Email address" data-error="Bruh, that email address is invalid" required>
+                    <div class="help-block with-errors small"></div>
+                </div>
+                <div class="form-group">
+                    <label for="pickup_date_time">Pickup date and time *</label>
+                    <input type="text"  class="form-control send_mail_form" id="pickup_date_time" name="pickup_date_time" placeholder="Pickup date time" required>
+                    <div class="help-block with-errors small"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" id="send_email" class="btn btn-primary" onclick="send_emails()">Send</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+        $('#take-form').validator()
+        $('#pickup_date_time').datetimepicker({
+        });
+        function get_product(clicked_product_id){
+            var selected_product = clicked_product_id.replace("button_id_", "");
+           localStorage.setItem("selected_product", selected_product);
+   
+        }
+    
+        
+        
+        
+        function send_emails(){
+            
+            event.preventDefault();
+            var customer_email = $("#customer_email").val();
+            var customer_fullname = $("#customer_fullname").val();
+            var pickup_date_time = $("#pickup_date_time").val();
+            var selected_product = localStorage.getItem("selected_product");
+            
+            
+            // $('#take_product').modal('hide')
+            $("#customer_email").val("");
+            $("#customer_fullname").val("");
+            $("#pickup_date_time").val("");
+            
+            if (customer_email != "" && customer_fullname !="" && pickup_date_time !=""){
+            var xhttp = new XMLHttpRequest();
+            $(".loader").removeClass("hide");
+            xhttp.onreadystatechange = function() {
+
+                if (this.readyState == 4 && this.status == 200) {
+                    var response_product_data = (this.responseText);
+                    if (response_product_data = "true"){
+                        location.reload();
+                    }
+                    
+                }
+            };
+            xhttp.open("POST", "{{url_for('product_info')}}" + "?selected_product=" + selected_product + "&customer_email=" + customer_email + "&customer_fullname=" + customer_fullname + "&pickup_date_time=" + pickup_date_time, true);
+            xhttp.send();
+            }
+        }
+
+        function get_category(clicked_id) {
+            var selected_category = clicked_id.replace("cat_", "");
+            window.location.replace("{{ url_for('category')}}"+ "/" + selected_category);
+            
+        }
+        
+            if(window.location.pathname == "/category/1"){
+                $("#cat_1").addClass("selected");
+            }else if(window.location.pathname == "/category/2") {
+                $("#cat_2").addClass("selected");
+            }else if(window.location.pathname == "/category/3") {
+                $("#cat_3").addClass("selected");
+            }else if(window.location.pathname == "/category/4") {
+                $("#cat_4").addClass("selected");
+            }else if(window.location.pathname == "/category/5") {
+                $("#cat_5").addClass("selected");
+            }else if(window.location.pathname == "/category/6") {
+                $("#cat_6").addClass("selected");
+            }
+        
+
+        function selected_category() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+
+                if (this.readyState == 4 && this.status == 200) {
+                    var response_data = (this.responseText);
+                }
+            };
+            xhttp.open("POST", "{{url_for('category')}}" + "?selected_category=" + selected_category, true);
+            xhttp.send();
+        }
+        
+        $(document).ready(function(){
+  lightbox.init();
+});
+    </script>
+    
+    
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox-plus-jquery.min.js"></script>
+    <script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
+</script>
+
+</body>
+
+</html>
+
