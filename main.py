@@ -1,8 +1,8 @@
 import os
-import pymysql
 from PIL import Image
 from flask import Flask, render_template, request, flash, jsonify, url_for
 from run import connection
+import pymysql
 
 
 def add_product(name, cat_id, condition, age, descrption, img):
