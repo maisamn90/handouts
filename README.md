@@ -12,10 +12,8 @@ This website is hosted on Heroku server in the following link:
 This website coded with python3 as Object oriented language with JavaScript and JQuery frameworks.
 
 ## Database
-I used Mysql for database and hosted is in RDS
+I used Mysql for database and hosted it in RDS
 
-
-Planning:
 
 ## Packages
 Used the package manager [pip] to install packages. All required packages are available in requirements.txt
