@@ -185,7 +185,10 @@
 <script type="text/javascript" src="{{ url_for('static',filename='js/main.js')}}"></script>
 <script type="text/javascript">
 
-
+function get_category(clicked_id) {
+    var selected_category = clicked_id.replace("cat_", "");
+    window.location.replace("{{ url_for('category')}}" + "/" + selected_category);
+    
 // Sending mails with products info to Owner and customers API on Take button
         function send_emails(){
             

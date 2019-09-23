@@ -7,11 +7,7 @@ function get_product(clicked_product_id) {
 
 }
 
-function get_category(clicked_id) {
-    var selected_category = clicked_id.replace("cat_", "");
-    window.location.replace("{{ url_for('category')}}" + "/" + selected_category);
 
-}
 
 if (window.location.pathname == "/category/1") {
     $("#cat_1").addClass("selected");
