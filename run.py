@@ -59,14 +59,13 @@ def product_info():
     save_customer_info(customer_fullname, customer_email, product_id)
     update_availability(product_id)
     
-    img_src = (request.host_url).replace("/product_info","") + "/static/img/uploads/" +product_info["Image"]
-    print(img_src)
+    # img_src = (request.host_url).replace("/product_info","") + "/static/img/uploads/" + product_info["Image"]
+    # print(img_src)
     customer_msg= Message('Handouts Customer Take Request for ({})'.format(product_info["Product_name"]), recipients=['{}'.format(customer_email)])
     customer_msg.html = """<p>Dear {}</p> 
             <p>you have been sent a take request for the product bellow: </p> 
             <ul>
             
-            <li><img src='{}'></li>
             <li>Product Name: {}</li>
             <li>Product Description: {}</li>
             <li>Product Age: {}</li>
@@ -80,7 +79,7 @@ def product_info():
             <li>Pickup Address: {}</li>
             <li>Pickup Date and Time:{} </li>
         
-            """.format(img_src, img_src,product_info["Product_name"], 
+            """.format(customer_fullname ,product_info["Product_name"], 
                     product_info["Description"], product_info["Age"], 
                     product_info["Product_condition"], product_info["Username"],
                     product_info["User_email"], product_info["Address"], pickup_date_time)
