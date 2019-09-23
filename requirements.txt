@@ -15,7 +15,7 @@ Flask-Mail==0.9.1
 futures==3.1.1
 heroku==0.1.4
 idna==2.6
-ikpdb==1.2.3
+
 Inflector==2.0.12
 ipaddress==1.0.17
 isort==4.3.21
