@@ -188,7 +188,7 @@ def get_recent_product():
                     Posts.Date
                     FROM Products INNER JOIN Users ON Users.Product_id = Products.Product_id
                     INNER JOIN Posts ON Posts.Product_id = Products.Product_id
-                    WHERE Availability = 1 and Users.User_type = "Donor" LIMIT 6;"""
+                    WHERE Availability = 1 and Users.User_type = "Donor" ORDER BY Product_id DESC LIMIT 6;"""
             cursor.execute(sql)
             return cursor
     finally:
