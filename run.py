@@ -6,8 +6,10 @@ import pymysql
 from flask_mail import Mail, Message
 
 connection = pymysql.connect(host='my-database-class.ctr3xxx4mow6.ca-central-1.rds.amazonaws.com',
-                            user=os.environ.get('User'),
-                            password=os.environ.get('Password'),
+                            # user=os.environ.get('User'),
+                            user='root',
+                            # password=os.environ.get('Password'),
+                            password='Maisamn901234',
                             db='Handouts'
                             )    
 app = Flask(__name__)
@@ -16,11 +18,11 @@ app.secret_key = "its_secret"
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_USERNAME'] = 'maisamn90@gmail.com'
+app.config['MAIL_PASSWORD'] = 'Maisamn@123'
 app.config['MAIL_USE_TSL'] = False
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_DEFAULT_SENDER'] = 'maisamn90@gmail.com'
 mail = Mail(app)
 
 # initial index page
@@ -28,7 +30,8 @@ mail = Mail(app)
 def index():
     recent_products = get_recent_product()
     if recent_products.rowcount == 0:
-        recent_products = {"nodata":""}
+        recent_products = {"nodata":"nodata"}
+        print("no data in here")
     return render_template("index.html", data = recent_products)
 
 @app.route('/category')
@@ -54,13 +57,12 @@ def product_info():
     customer_email = my_arg['customer_email']
     pickup_date_time = my_arg['pickup_date_time']
     product_info = get_product_data(product_id)
-    print(product_info, "product_info")
     
     save_customer_info(customer_fullname, customer_email, product_id)
     update_availability(product_id)
     
     # img_src = (request.host_url).replace("/product_info","") + "/static/img/uploads/" + product_info["Image"]
-    # print(img_src)
+
     customer_msg= Message('Handouts Customer Take Request for ({})'.format(product_info["Product_name"]), recipients=['{}'.format(customer_email)])
     customer_msg.html = """<p>Dear {}</p> 
             <p>you have been sent a take request for the product bellow: </p> 

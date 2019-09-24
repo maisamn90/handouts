@@ -80,32 +80,34 @@
         </div>
     </section>
     
-    <section class="recently-added">
-                {% if not data["nodata"] %}
-                <div class="container">
-                    <h2>Recently Added</h2>
-                    <hr>
-                <div class="row">
-                    {% for product in data %}
-                    <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="small-card-img">
-                            <img src="{{ url_for('static',filename='img/uploads/small/')}}{{product["Image"]}}" class="card-img-top" alt="{{product[" Product_name "]}}">
-                        </div>
-                        
-                        <div class="card-body">
-                            <h3>{{product["Product_name"]}}</h3>
-                            <small class="text-muted ml-auto">Posted: {{product["Date"]}}</small>
-                            <p class="card-text">{{product["Description"]}}</p>
-                            <a class="btn btn-green ml-auto" href="category/{{product["Category_id"]}}#prod_id_{{product["Product_id"]}}" >More details</a>
-                        </div>
+<section class="recently-added">
+    {% if data["nodata"] %}
+    <div></div>
+    {% else %}
+    <div class="container">
+        <h2>Recently Added</h2>
+        <hr>
+        <div class="row">
+            {% for product in data %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="small-card-img">
+                        <img src="{{ url_for('static',filename='img/uploads/small/')}}{{product[" Image "]}}" class="card-img-top" alt="{{product[" Product_name "]}}">
                     </div>
+
+                    <div class="card-body">
+                        <h3>{{product["Product_name"]}}</h3>
+                        <small class="text-muted ml-auto">Posted: {{product["Date"]}}</small>
+                        <p class="card-text">{{product["Description"]}}</p>
+                        <a class="btn btn-green ml-auto" href="category/{{product[" Category_id "]}}#prod_id_{{product["Product_id "]}}">More details</a>
                     </div>
-                 {% endfor %}
-                 </div>
-                 </div>
-                 {% endif %}
-    </section>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</section>
     <footer>
         <a class="navbar-brand" href="/"><img src="../static/img/handouts-logo.png" class="img-fluid" width="40px"></img>Handouts</a>
     </footer>

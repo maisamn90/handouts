@@ -1,5 +1,4 @@
-$('#take-form').validator()
-$('#pickup_date_time').datetimepicker({});
+
 
 function get_product(clicked_product_id) {
     var selected_product = clicked_product_id.replace("button_id_", "");

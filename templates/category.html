@@ -184,6 +184,8 @@
 
 <script type="text/javascript" src="{{ url_for('static',filename='js/main.js')}}"></script>
 <script type="text/javascript">
+$('#take-form').validator();
+$('#pickup_date_time').datetimepicker({});
 
 function get_category(clicked_id) {
     var selected_category = clicked_id.replace("cat_", "");
