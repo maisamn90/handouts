@@ -6,10 +6,8 @@ import pymysql
 from flask_mail import Mail, Message
 
 connection = pymysql.connect(host='my-database-class.ctr3xxx4mow6.ca-central-1.rds.amazonaws.com',
-                            # user=os.environ.get('User'),
-                            user='root',
-                            # password=os.environ.get('Password'),
-                            password='Maisamn901234',
+                            user=os.environ.get('User'),
+                            password=os.environ.get('Password'),
                             db='Handouts'
                             )    
 app = Flask(__name__)
@@ -18,11 +16,11 @@ app.secret_key = "its_secret"
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'maisamn90@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Maisamn@123'
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 app.config['MAIL_USE_TSL'] = False
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_DEFAULT_SENDER'] = 'maisamn90@gmail.com'
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_USERNAME')
 mail = Mail(app)
 
 # initial index page
